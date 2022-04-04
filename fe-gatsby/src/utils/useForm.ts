@@ -1,13 +1,14 @@
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 
-export default function useForm(defaults) {
+export function useForm(defaults: any) {
   const [values, setValues] = useState(defaults);
 
-  function updateValue(e) {
+  function updateValue(e: ChangeEvent<HTMLInputElement>) {
     // check if it's a number and convert
     let { value } = e.target;
     if (e.target.type === 'number') {
-      value = parseInt(e.target.value);
+      // value = parseInt(e.target.value) ;
+      value = e.target.value ;
     }
 
     setValues({

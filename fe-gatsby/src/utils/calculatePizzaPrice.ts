@@ -4,6 +4,6 @@ const sizes = {
   L: 1.25,
 };
 
-export default function calculatePizzaPrice(cents, size) {
+export function calculatePizzaPrice(cents: number, size: "S" | "M" | "L") {
   return cents * sizes[size];
 }

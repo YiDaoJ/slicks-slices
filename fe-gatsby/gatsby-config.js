@@ -1,21 +1,7 @@
-/** @type {import('gatsby').GatsbyConfig} */
-module.exports = {
-  siteMetadata: {
-    title: ``,
-    siteUrl: `https://www.yourdomain.tld`
-  },
-  plugins: [{
-    resolve: 'gatsby-source-sanity',
-    options: {
-      "projectId": "dx4yaf7p",
-      dataset: 'production',
-      watchMode: true,
-      token: process.env.SANITY_TOKEN,
-    }
-  }, 
-  "gatsby-plugin-styled-components",
-  "gatsby-plugin-image",
-  "gatsby-plugin-sharp",
-  "gatsby-transformer-sharp"
-  ]
-};
+// We register the TypeScript evaluator in gatsby-config so we don't need to do
+// it in any other .js file. It automatically reads TypeScript config from
+// tsconfig.json.
+require('ts-node').register();
+
+// Use a TypeScript version of gatsby-config.js.
+module.exports = require('./gatsby-config.ts');

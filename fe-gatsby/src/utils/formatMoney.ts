@@ -3,6 +3,6 @@ const formatter = Intl.NumberFormat('de-DE', {
   currency: 'EUR',
 });
 
-export default function formatMoney(cents) {
+export function formatMoney(cents: number) {
   return formatter.format(cents / 100);
 }

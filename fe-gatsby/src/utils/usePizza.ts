@@ -1,19 +1,19 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { attachNamesAndPrices } from './attachNamesAndPrices';
-import calculateOrderTotal from './calculateOrderTotal';
+import { calculateOrderTotal } from './calculateOrderTotal';
 
-export default function usePizza({ pizzas, values }) {
+export function usePizza({ pizzas, values }: any) {
   // 1. create some states to hold the order
   const [order, setOrder] = useState([]);
-  const [error, setError] = useState();
-  const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState('');
+  const [error, setError] = useState<string>();
+  const [loading, setLoading] = useState<boolean>(false);
+  const [message, setMessage] = useState<string>('');
   // 2. make a funtion to add pizza to order
-  const addToOrder = (orderedPizza) => {
-    setOrder([...order, orderedPizza]);
+  const addToOrder = (orderedPizza: any) => {
+    setOrder([...order, orderedPizza] as any);
   };
   // 3. make a funtion to remove pizza from order
-  const removeFromOrder = (index) => {
+  const removeFromOrder = (index: number) => {
     // console.log('___ index', [
     //   ...order.slice(0, index),
     //   ...order.slice(index + 1),
@@ -22,11 +22,11 @@ export default function usePizza({ pizzas, values }) {
   };
 
   // triggered when someone submit the form
-  const submitOrder = async (e) => {
+  const submitOrder = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     setLoading(true);
-    setError(null);
+    setError(undefined);
     // setMessage('Go eat!');
 
     const body = {
